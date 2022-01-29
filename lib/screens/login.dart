@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_social_ui/screens/home_screen.dart';
+import 'package:flutter_social_ui/widgets/custom_clipper.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -16,16 +18,19 @@ class _LoginScreenState extends State<LoginScreen> {
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
-              Image(
-                image: AssetImage('assets/images/login_background.jpg'),
-                height: MediaQuery.of(context).size.height / 2.5,
-                width: double.infinity,
-                fit: BoxFit.cover,
+              ClipPath(
+                clipper: CurvedClipper(),
+                child: Image(
+                  image: AssetImage('assets/images/login_background.jpg'),
+                  height: MediaQuery.of(context).size.height / 2.5,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
               ),
               Text(
                 "Frenzy",
                 style: TextStyle(
-                    letterSpacing: 1.0,
+                    letterSpacing: 10.0,
                     fontSize: 30.0,
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).primaryColor),
@@ -68,7 +73,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushReplacement(
+                      context, MaterialPageRoute(builder: (_) => HomeScreen()));
+                },
                 child: Container(
                   height: 45.0,
                   child: Text(
